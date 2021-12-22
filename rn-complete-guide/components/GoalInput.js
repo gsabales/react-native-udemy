@@ -4,16 +4,16 @@ import { View, TextInput, Button, StyleSheet } from "react-native";
 const GoalInput = (props) => {
     const [enteredGoal, setEnteredGoal] = useState("");
     const onTextChange = (newGoal) => setEnteredGoal(newGoal);
-    const addCourseGoalHandler = () => {
-        props.onAddGoal({ id: Math.random().toString(), value: enteredGoal });
-    };
 
     return (
         <View style={styles.container}>
             <TextInput style={styles.textInput}
                 onChangeText={onTextChange}
                 value={enteredGoal} />
-            <Button style={styles.button} title={"ADD"} onPress={addCourseGoalHandler} />
+            {/* <Button style={styles.button} title={"ADD"}
+                onPress={props.onAddGoal.bind(this, { id: Math.random().toString(), value: enteredGoal })} /> */}
+            <Button style={styles.button} title={"ADD"}
+                onPress={() => props.onAddGoal({ id: Math.random().toString(), value: enteredGoal })} />
         </View>
     );
 }
